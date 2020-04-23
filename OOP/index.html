@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 10px;
+    }
+    .container-map {
+      width: 600px;
+      height: 600px;
+      margin-top: 20px;
+      margin-left: 10px;
+      background-color: antiquewhite;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
+      font-weight: bolder;
+    }
+    .container-map p {
+      font-size: 15px;
+      color:brown;
+      font-weight:normal;
+    }
+    #food {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-map">
+    <span>Level - 1</span>
+    <p>Control Snake: A--left W--up S--down D--right</p>
+  </div>
+  <div class="score">Score: <span></span></div>
+  <script src="../OOP/classes/level.js"></script>
+  <script src="../OOP/classes/food.js"></script>
+  <script src="../OOP/classes/snake.js"></script>
+  <script src="../OOP/classes/game.js"></script>  
+  <script src="./app.js"></script>
+</body>
+
+</html>

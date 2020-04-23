@@ -155,6 +155,48 @@ Snake.prototype.bindKey = function () {
 const containerMap = document.querySelector('.container-map')
 const snack = new Snake(20, 20, 'green', containerMap);
 
+function Food(color) {
+  this.color = color;
+}
+
+Food.prototype.renderFood = function () {
+  let x = Math.floor(Math.random() * 580 / 20) * 20 + 20;
+  let y = Math.floor(Math.random() * 580 / 20) * 20 + 20;
+  console.log('random y : ' + y);
+  console.log('random x : ' + x);
+  const div = document.createElement('div');
+  div.setAttribute('id', 'food');
+  div.style.width = `20px`;
+  div.style.height = `20px`;
+  div.style.backgroundColor = this.color;
+  div.style.position = "absolute";
+  div.style.top = `${x}px`
+  div.style.left = `${y}px`;
+
+  return div;
+}
+
+function Level() {
+}
+
+Level.prototype.changeSpeedandLevel = function (arrayLength) {
+    console.log('la level arrayLength ----->>>' + arrayLength)
+    switch (true) {
+        case (3 <= arrayLength && arrayLength < 5):
+            return ['Level - 1', 200]
+        case (5 <= arrayLength && arrayLength < 10):
+            return ['Level - 2', 80]
+        case (10 <= arrayLength && arrayLength < 15):
+            return  ['Level - 3', 60]
+        case (15 <= arrayLength && arrayLength < 20):
+            return  ['Level - 4', 40]
+        case (20 <= arrayLength && arrayLength < 25):
+            return  ['Level - 5', 20]
+        case (arrayLength >= 25):
+            return ['Level - 6', 10] 
+    }
+}
+
 snack.run();
 snack.bindKey();
 

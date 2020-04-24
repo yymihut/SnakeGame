@@ -23,20 +23,20 @@ Game.prototype.run = function() {
         console.log('getX, getY---- >'+ getX +'-----'+getY)
         if (this.snakeul.body[0].x * 20 == getX && this.snakeul.body[0].y * 20 == getY) {
             let atEnd = this.snakeul.body[this.snakeul.body.length - 1];
-            console.log(this.snakeul.body[0].x+'-X---cap---Y-'+this.snakeul.body[0].y)
+            /* console.log(this.snakeul.body[0].x+'-X---cap---Y-'+this.snakeul.body[0].y)
             for(let i=0; i<this.snakeul.body.length; i++){
                 console.log(this.snakeul.body[i].x+'-X-----Y-'+this.snakeul.body[i].y)
             }            
-            console.log(atEnd)
+            console.log(atEnd) */
             this.snakeul.body.push({
                 x: atEnd.x + 10,
                 y: atEnd.y + 10,
                 color: 'green'
             });
-            this.score = this.score + 50;
+            /* this.score = this.score + 50;
             const score = document.querySelector('.score > span');
             score.innerText = `${this.score}`
-            console.log(score)
+            console.log(score) */
             this.pizza.render();
             
             clearInterval(intervalId);

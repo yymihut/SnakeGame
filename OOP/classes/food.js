@@ -26,6 +26,15 @@ class Food {
             scoreValue: this.score
         }
     }
+    render() {
+        if (this.foodInDom) {
+            this.foodInDom.remove();
+        }   
+        this.foodInDom = this.createDiv();       
+        this.containerMap.appendChild(this.foodInDom);
+        this.foodObject();           
+    }
+
 }
 
 class Pizza extends Food {
@@ -34,14 +43,6 @@ class Pizza extends Food {
         this.image = 'url(./images/pizza.png)';
         this.name = 'pizza';
         this.score = 20;
-    }
-    render() {
-        if (this.foodInDom) {
-            this.foodInDom.remove();
-        }   
-        this.foodInDom = this.createDiv();       
-        this.containerMap.appendChild(this.foodInDom);
-        this.foodObject();           
     }
 }
 
@@ -52,14 +53,6 @@ class Ham extends Food {
         this.name = 'ham';
         this.score = 30;
     }
-    render() {
-        if (this.foodInDom) {
-            this.foodInDom.remove();
-        }
-        this.foodInDom = this.createDiv();
-        this.containerMap.appendChild(this.foodInDom);
-        this.foodObject();
-    }
 }
 
 class Salam extends Food {
@@ -69,12 +62,4 @@ class Salam extends Food {
         this.name = 'salam';
         this.score = 40;
     }
-    render() {
-        if (this.foodInDom) {
-            this.foodInDom.remove();
-        }
-        this.foodInDom = this.createDiv();
-        this.containerMap.appendChild(this.foodInDom);
-        this.foodObject(); 
-    }
-} 
+}

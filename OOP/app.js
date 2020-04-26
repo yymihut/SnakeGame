@@ -8,7 +8,7 @@ game.addGameOverEvent(function (e) {
     this.snakeul.body.elementsNotDistinct()) {
     alert('Game over');
     location.reload();
-    /* game.start(); */
+    game.start();
   }  
 })
 

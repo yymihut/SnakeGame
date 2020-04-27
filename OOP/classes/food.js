@@ -6,8 +6,8 @@ class Food {
 
     createDiv() {
         const div = document.createElement('div');
-        this.x = Math.floor(Math.random() * 580 / 20) * 20 + 20;
-        this.y = Math.floor(Math.random() * 580 / 20) * 20 + 20;
+        this.x = Math.floor(Math.random() * 600 / 20) * 20 + 20;
+        this.y = Math.floor(Math.random() * 600 / 20) * 20 + 20;
         div.style.width = `20px`;
         div.style.height = `20px`;
         div.style.backgroundImage = `${this.image}`;

@@ -1,7 +1,6 @@
 class Game {
     constructor(containerMap) {
-        this.containerMap = containerMap;
-        this.foodObjects = [];
+        this.containerMap = containerMap;        
     }
 
     start() {
@@ -11,6 +10,7 @@ class Game {
     }
 
     foodInit() {
+        this.foodObjects = [];
         this.snakeul = new Snake(20, 20, 'green', containerMap);
         this.pizza = new Pizza(this.containerMap);
         this.pizza.render();
@@ -50,13 +50,13 @@ class Game {
                 this.renderClearRun(this.salam, idxSalam);
             }
             //game over
-            this.gameOverFn();
+            /* this.gameOverFn(); */
             //modificare level si viteza
             this.containerMap.querySelector('span').innerText =
                 `${this.levelAndSpeed().level}`;
-        }, this.levelAndSpeed().speed); /* **************************** */
+        },  4526)
     }
-
+/* this.levelAndSpeed().speed); */
     levelAndSpeed() {
         const arrayLength = this.snakeul.body.length;
         switch (true) {
@@ -95,7 +95,7 @@ class Game {
 
     findFoodIndex(foodType) {
         const foodIndex = this.foodObjects.map(e => {
-            for (i = 0; i < this.foodObjects.length; i++) {
+            for (let i = 0; i < this.foodObjects.length; i++) {
                 return e.name;
             }
         }).indexOf(`${foodType}`);
@@ -129,7 +129,7 @@ class Game {
         scoreDOM.innerText = scoreValue;
         console.log(scoreValue);
     }
-    
+
     gameOverFn() {
         if (this.snakeul.body[0].x * 20 == 620 || this.snakeul.body[0].y * 20 == 620 ||
             this.snakeul.body[0].x * 20 == 0 || this.snakeul.body[0].y * 20 == 0 ||
@@ -140,14 +140,6 @@ class Game {
         }
     }
 }
-
-
-
-
-
-
-
-
 
 // adaugam la Array functia elementsNotDistinct
 // pt. verificare ca arrayul sarpelui sa contina elemente unice (daca nu Game over)

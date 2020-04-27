@@ -7,13 +7,13 @@
   <title>Document</title>
   <style>
     body {
-      margin: 10px;
+      display: flex;
     }
+
     .container-map {
       width: 600px;
-      height: 600px;
-      margin-top: 20px;
-      margin-left: 10px;
+      height: 600px;      
+      margin: 10px;
       background-color: antiquewhite;
       display: flex;
       flex-direction: column;
@@ -22,29 +22,47 @@
       font-size: 15px;
       font-weight: bolder;
     }
+
     .container-map p {
       font-size: 15px;
-      color:brown;
-      font-weight:normal;
+      color: brown;
+      font-weight: normal;
     }
+    .containerResults {
+      width: 250px;
+    }
+
     #food {
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: bolder;
     }
+
+    #playerBtn {
+      margin-top: 10px;
+      width: 120px;
+      height: 25px;
+    }
   </style>
 </head>
 
 <body>
+
   <div class="container-map">
     <span>Level - 1</span>
     <p>Control Snake: A--left W--up S--down D--right</p>
     <div class="score">Score: <span id='score'>0</span> </div>
+
   </div>
+  <div class="containerResults">
+    <button id="playerBtn">Player name</button>
+    <input type="text" placeholder="Enter your Name">
+  </div>
+
   <script src="../OOP/classes/food.js"></script>
   <script src="../OOP/classes/snake.js"></script>
-  <script src="../OOP/classes/game.js"></script>  
+  <script src="../OOP/classes/game.js"></script>
   <script src="./app.js"></script>
 </body>
 

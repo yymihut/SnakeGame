@@ -26,6 +26,7 @@ class Food {
             scoreValue: this.score
         }
     }
+
     render() {
         if (this.foodInDom) {
             this.foodInDom.remove();

@@ -1,6 +1,11 @@
 const containerMap = document.querySelector('.container-map');
+const containerGameresults = document.querySelector('.containerGameresults');
+const startGameBtn = document.getElementById('startGame');
 
-const game = new Game(containerMap);
-game.start();
+startGameBtn.addEventListener('click', function () {
+  const game = new Game(containerMap, containerGameresults);
+  game.start();
+})
+
 
 

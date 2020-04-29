@@ -8,6 +8,8 @@
   <style>
     body {
       display: flex;
+      box-sizing: border-box;
+      margin: 10px;
     }
 
     .container-map {
@@ -21,6 +23,7 @@
       align-items: center;
       font-size: 15px;
       font-weight: bolder;
+      padding: unset;
     }
 
     .container-map p {
@@ -28,8 +31,27 @@
       color: brown;
       font-weight: normal;
     }
-    .containerResults {
-      width: 250px;
+    .containerGameresults {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+      width: 200px;
+    }
+    .containerGameresults p {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bolder;
+      font-size: 17px;
+    }
+
+    .containerGameresults input {
+      margin-top: 5px;
+    }
+    .containerGameresults span {
+      margin-left: 25px;
+      font-weight: bold;
+      font-size: 15px;
     }
 
     #food {
@@ -39,7 +61,7 @@
       font-weight: bolder;
     }
 
-    #playerBtn {
+    #startGame {
       margin-top: 10px;
       width: 120px;
       height: 25px;
@@ -55,9 +77,15 @@
     <div class="score">Score: <span id='score'>0</span> </div>
 
   </div>
-  <div class="containerResults">
-    <button id="playerBtn">Player name</button>
-    <input type="text" placeholder="Enter your Name">
+  <div class="containerGameresults">
+    <p>Please enter your name to Start the Snake Game</p>
+    <button id="startGame">Start Game</button>
+    <input type="text" id="enteredName" placeholder="Enter your Name">
+    <p>Top 10 best players</p>
+    <p><span>Player Name</span><span>Score</span></p>
+    <ul class="gameResults">
+      
+    </ul>
   </div>
 
   <script src="../OOP/classes/food.js"></script>

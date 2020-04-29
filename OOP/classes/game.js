@@ -1,12 +1,32 @@
 class Game {
-    constructor(containerMap) {
-        this.containerMap = containerMap;        
+    constructor(containerMap, containerGameresults) {
+        this.containerMap = containerMap;
+        this.containerGameresults = containerGameresults;        
     }
 
     start() {
-        this.foodInit();
-        this.run();
-        this.snakeul.bindKey();
+        const nameCompleted = this.containerGameresults.querySelector('.containerGameresults enteredName');
+        console.log(nameCompleted);
+        if (nameCompleted) {
+            this.foodInit();
+            this.run();
+            this.snakeul.bindKey();
+        } else {
+            this.errorCompletion()
+        }
+
+    }
+
+    playerInit() {
+        this.player = new Player(this.containerGameresults);
+    }
+
+    errorCompletion() {
+        const nameCompleted = this.containerGameresults.getElementById('enteredName');
+        console.log(nameCompleted.id);
+        nameCompleted.style.color = 'red';
+        nameCompleted.style.fontWeight = 'bold';
+        nameCompleted.innerText = 'Please enter Name !'
     }
 
     foodInit() {
@@ -54,9 +74,9 @@ class Game {
             //modificare level si viteza
             this.containerMap.querySelector('span').innerText =
                 `${this.levelAndSpeed().level}`;
-        },  4526)
+        }, 4526)
     }
-/* this.levelAndSpeed().speed); */
+    /* this.levelAndSpeed().speed); */
     levelAndSpeed() {
         const arrayLength = this.snakeul.body.length;
         switch (true) {

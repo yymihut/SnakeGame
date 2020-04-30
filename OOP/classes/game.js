@@ -1,32 +1,22 @@
 class Game {
-    constructor(containerMap, containerGameresults) {
+    constructor(containerMap, gameResults, nameCompleted) {
         this.containerMap = containerMap;
-        this.containerGameresults = containerGameresults;        
+        this.gameResults = gameResults;
+        this.nameCompleted = nameCompleted;
+
     }
 
     start() {
-        const nameCompleted = this.containerGameresults.querySelector('.containerGameresults enteredName');
-        console.log(nameCompleted);
-        if (nameCompleted) {
-            this.foodInit();
-            this.run();
-            this.snakeul.bindKey();
-        } else {
-            this.errorCompletion()
-        }
-
+        this.foodInit();
+        this.run();
+        this.snakeul.bindKey();
+        this.playersInit();
     }
 
-    playerInit() {
-        this.player = new Player(this.containerGameresults);
-    }
-
-    errorCompletion() {
-        const nameCompleted = this.containerGameresults.getElementById('enteredName');
-        console.log(nameCompleted.id);
-        nameCompleted.style.color = 'red';
-        nameCompleted.style.fontWeight = 'bold';
-        nameCompleted.innerText = 'Please enter Name !'
+    playersInit() {
+        this.players = new Players(this.gameResults, this.nameCompleted, this.scoreValue);
+        this.players.render();
+        console.log('playersInit()----', this.gameResults)
     }
 
     foodInit() {
@@ -70,11 +60,11 @@ class Game {
                 this.renderClearRun(this.salam, idxSalam);
             }
             //game over
-            /* this.gameOverFn(); */
+            this.gameOverFn();
             //modificare level si viteza
             this.containerMap.querySelector('span').innerText =
                 `${this.levelAndSpeed().level}`;
-        }, 4526)
+        }, 452)
     }
     /* this.levelAndSpeed().speed); */
     levelAndSpeed() {
@@ -145,9 +135,8 @@ class Game {
     addScore(thisFood) {
         const foodScore = thisFood.objectFood.scoreValue;
         const scoreDOM = this.containerMap.querySelector('.score > span');
-        const scoreValue = parseInt(scoreDOM.innerText) + foodScore;
-        scoreDOM.innerText = scoreValue;
-        console.log(scoreValue);
+        this.scoreValue = parseInt(scoreDOM.innerText) + foodScore;
+        scoreDOM.innerText = this.scoreValue;
     }
 
     gameOverFn() {
@@ -155,8 +144,12 @@ class Game {
             this.snakeul.body[0].x * 20 == 0 || this.snakeul.body[0].y * 20 == 0 ||
             this.snakeul.body.elementsNotDistinct()) {
             alert('Game over');
-            location.reload();
-            game.start();
+            /* location.reload(); */
+            /* checkPlayers(); */
+            /* this.players.render(); */ 
+            this.players.isLocalStorage();
+            this.players.updateLocalStorage(this.scoreValue);
+            /* this.players.render(); */
         }
     }
 }

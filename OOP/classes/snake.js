@@ -67,7 +67,7 @@ class Snake {
 
     bindKey() {
         document.addEventListener('keyup', event => {
-            console.log('ddd', event.keyCode);
+            /* console.log('ddd', event.keyCode); */
             switch (event.keyCode) {
                 case 83: // down
                     this.direction = 'down';

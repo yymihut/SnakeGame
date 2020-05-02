@@ -6,47 +6,80 @@ class Players {
     }
 
     updateLocalStorage(scoreValue) {
-        this.isLocalStorage();     
+        this.isLocalStorage();
+        this.isPush(scoreValue);
+    }
+
+    isPush(scoreValue) {
         this.playerObject = {
             name: this.nameCompleted.value,
             score: scoreValue
         }
-        console.log('update local storage', this.playersArray);
-        this.playersArray.push(this.playerObject);
-        this.seItemLocalStorage();
-
-    }
-
-    isLocalStorage() {
-        if (window.localStorage.length) {
-            this.getItemLocalStorage();
-            console.log('local', this.playersArray)
-        } else {
-            this.seItemLocalStorage();
+        if (this.playerObject.score) {
+            this.playersArray.push(this.playerObject);
+            this.setItemLocalStorage();
         }
-        console.log(window.localStorage.length);
+        this.getArrayPlayers();
+        this.render();
     }
 
-    seItemLocalStorage() {
-        this.playersArray = window.localStorage.setItem('playersArray', JSON.stringify(this.playersArray));
+    getArrayPlayers() {
+        const arrayToSort = [...this.getItemLocalStorage()];
+        this.playersArraySort = this.sortArray(arrayToSort);
+        return this.playersArraySort;
+    }
+
+    sortArray(array) {
+        const arraySorted = array.sort(function (a, b) {
+            return b.score - a.score;
+        });
+        return arraySorted;
+    }
+
+    isLocalStorage() {       
+        if (window.localStorage.length) {
+            this.getItemLocalStorage();            
+        } else {
+            this.setItemLocalStorage();
+        }
+    }
+
+    setItemLocalStorage() {        
+        localStorage.setItem('playersArray', JSON.stringify(this.playersArray));        
     }
     getItemLocalStorage() {
         this.playersArray = JSON.parse(window.localStorage.getItem('playersArray'));
+        return this.playersArray;
     }
 
-    createDomLi() {
-        const divPlayer = document.createElement('div');
+    createDomPlayers(i) {               
+        this.divPlayer = document.createElement('div');
         const liName = document.createElement('li');
+        liName.setAttribute('class', 'nameList');
         const liScore = document.createElement('li');
-        divPlayer.setAttribute('class', 'divPlayer');
-        divPlayer.appendChild(liName);
-        divPlayer.appendChild(liScore);
-        console.log('divPlayer', divPlayer)
-        return divPlayer;
+        liScore.setAttribute('class', 'scoreList');
+        liName.innerText = `${this.playersArraySort[i].name}`;
+        liScore.innerText = `${this.playersArraySort[i].score}`;
+        this.divPlayer.setAttribute('class', 'divPlayer');
+        this.divPlayer.appendChild(liName);
+        this.divPlayer.appendChild(liScore);
+        return this.divPlayer;
     }
 
     render() {
-        this.player = this.createDomLi();
-        this.gameResults.appendChild(this.player);
+        this.gameResults.innerHTML = ''; 
+        this.getArrayPlayers();
+        if (this.playersArraySort.length > 3) {
+            for (let i = 0; i < 3; i++) {
+                const players = this.createDomPlayers(i);
+                this.gameResults.appendChild(players);
+            }
+        } else {
+            for (let i = 0; i < this.playersArraySort.length; i++) {
+                const players = this.createDomPlayers(i);
+                this.gameResults.appendChild(players);
+            }
+        }
+
     }
 }

@@ -1,0 +1,83 @@
+body {
+  display: flex;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.container-map {
+  width: 600px;
+  height: 600px;
+  margin: 10px;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bolder;
+  padding: unset;
+}
+
+.container-map p {
+  font-size: 15px;
+  color: brown;
+  font-weight: normal;
+}
+.containerGameresults {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  width: 200px;
+}
+.containerGameresults p {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: unset;
+  font-weight: bolder;
+  font-size: 17px;
+}
+
+.containerGameresults input {
+  margin-top: 5px;
+}
+.containerGameresults span {
+  margin-left: 25px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+li {
+  list-style-type: none;
+  margin-top: 8px;
+}
+
+.divPlayer {
+  display: flex;
+  justify-content: space-between;
+}
+.gameResults {
+  margin-top: unset;
+  margin-left: 25px;
+  padding: unset;
+  width: 140px;
+}
+.nameList {
+  margin-left: 5px;
+}
+.scoreList {
+  margin-left: 25px;
+}
+
+#food {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
+#startGame {
+  margin-top: 10px;
+  width: 120px;
+  height: 25px;
+}

@@ -10,13 +10,13 @@ class Game {
         this.foodInit();
         this.run();
         this.snakeul.bindKey();
-        this.playersInit();
     }
 
     playersInit() {
         this.players = new Players(this.gameResults, this.nameCompleted, this.scoreValue);
-        this.players.render();
-        console.log('playersInit()----', this.gameResults)
+        if (window.localStorage.length) {
+            this.players.render();
+        } 
     }
 
     foodInit() {
@@ -31,7 +31,6 @@ class Game {
         this.salam = new Salam(this.containerMap);
         this.salam.render();
         this.foodObjects.push(this.salam.objectFood);
-        console.log(this.foodObjects);
     }
 
     // facem ca snake-ul nostru sa se miste
@@ -64,7 +63,7 @@ class Game {
             //modificare level si viteza
             this.containerMap.querySelector('span').innerText =
                 `${this.levelAndSpeed().level}`;
-        }, 452)
+        }, 152)
     }
     /* this.levelAndSpeed().speed); */
     levelAndSpeed() {
@@ -137,19 +136,24 @@ class Game {
         const scoreDOM = this.containerMap.querySelector('.score > span');
         this.scoreValue = parseInt(scoreDOM.innerText) + foodScore;
         scoreDOM.innerText = this.scoreValue;
+        console.log('score la if', this.scoreValue);
+    }
+
+    isScore() {
+        if (!this.scoreValue) {
+            this.scoreValue = 0
+        }
     }
 
     gameOverFn() {
         if (this.snakeul.body[0].x * 20 == 620 || this.snakeul.body[0].y * 20 == 620 ||
             this.snakeul.body[0].x * 20 == 0 || this.snakeul.body[0].y * 20 == 0 ||
             this.snakeul.body.elementsNotDistinct()) {
-            alert('Game over');
-            /* location.reload(); */
-            /* checkPlayers(); */
-            /* this.players.render(); */ 
-            this.players.isLocalStorage();
+            this.isScore();
             this.players.updateLocalStorage(this.scoreValue);
-            /* this.players.render(); */
+            alert('Game over');
+            clearInterval(this.intervalId);
+            location.reload();
         }
     }
 }

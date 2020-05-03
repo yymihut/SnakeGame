@@ -69,17 +69,6 @@ class Players {
     render() {
         this.gameResults.innerHTML = '';
         this.getArrayPlayers();
-        /* if (this.playersArraySort.length > 3) {
-            for (let i = 0; i < 3; i++) {
-                const players = this.createDomPlayers(i);
-                this.gameResults.appendChild(players);
-            }
-        } else {
-            for (let i = 0; i < this.playersArraySort.length; i++) {
-                const players = this.createDomPlayers(i);
-                this.gameResults.appendChild(players);
-            }
-        } */
         const items = this.playersArraySort.filter((item, idx) => idx < 3);
 
         for (let i = 0; i < items.length; i++) {

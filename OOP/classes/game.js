@@ -59,13 +59,13 @@ class Game {
                 this.renderClearRun(this.salam, idxSalam);
             }
             //game over
-            this.gameOverFn();
+            this.checkIfGameOver();
             //modificare level si viteza
             this.containerMap.querySelector('span').innerText =
                 `${this.levelAndSpeed().level}`;
-        }, 152)
+        },this.levelAndSpeed().speed);
     }
-    /* this.levelAndSpeed().speed); */
+    /*  */
     levelAndSpeed() {
         const arrayLength = this.snakeul.body.length;
         switch (true) {
@@ -145,7 +145,7 @@ class Game {
         }
     }
 
-    gameOverFn() {
+    checkIfGameOver() {
         if (this.snakeul.body[0].x * 20 == 620 || this.snakeul.body[0].y * 20 == 620 ||
             this.snakeul.body[0].x * 20 == 0 || this.snakeul.body[0].y * 20 == 0 ||
             this.snakeul.body.elementsNotDistinct()) {

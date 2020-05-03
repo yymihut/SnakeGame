@@ -36,23 +36,23 @@ class Players {
         return arraySorted;
     }
 
-    isLocalStorage() {       
+    isLocalStorage() {
         if (window.localStorage.length) {
-            this.getItemLocalStorage();            
+            this.getItemLocalStorage();
         } else {
             this.setItemLocalStorage();
         }
     }
 
-    setItemLocalStorage() {        
-        localStorage.setItem('playersArray', JSON.stringify(this.playersArray));        
+    setItemLocalStorage() {
+        localStorage.setItem('playersArray', JSON.stringify(this.playersArray));
     }
     getItemLocalStorage() {
         this.playersArray = JSON.parse(window.localStorage.getItem('playersArray'));
         return this.playersArray;
     }
 
-    createDomPlayers(i) {               
+    createDomPlayers(i) {
         this.divPlayer = document.createElement('div');
         const liName = document.createElement('li');
         liName.setAttribute('class', 'nameList');
@@ -67,9 +67,9 @@ class Players {
     }
 
     render() {
-        this.gameResults.innerHTML = ''; 
+        this.gameResults.innerHTML = '';
         this.getArrayPlayers();
-        if (this.playersArraySort.length > 3) {
+        /* if (this.playersArraySort.length > 3) {
             for (let i = 0; i < 3; i++) {
                 const players = this.createDomPlayers(i);
                 this.gameResults.appendChild(players);
@@ -79,7 +79,12 @@ class Players {
                 const players = this.createDomPlayers(i);
                 this.gameResults.appendChild(players);
             }
-        }
+        } */
+        const items = this.playersArraySort.filter((item, idx) => idx < 3);
 
+        for (let i = 0; i < items.length; i++) {
+            const players = this.createDomPlayers(i);
+            this.gameResults.appendChild(players);
+        }
     }
 }
